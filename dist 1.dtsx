@@ -1,0 +1,1712 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/3/2025 3:20:22 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-N7RI0BVI"
+  DTS:CreatorName="LAPTOP-N7RI0BVI\am443"
+  DTS:DTSID="{C0AA2785-F54E-4D22-8419-B32C383323B6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{F19C5E97-7301-453B-8E18-585ED22B1EEF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Distributor 1]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{0E16C44F-B12E-4B04-905F-F730FDE9B37D}"
+      DTS:ObjectName="Distributor 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\am443\OneDrive\سطح المكتب\Distributor 1.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="customer Code"
+              DTS:DTSID="{3B1193FD-47FA-4208-BA42-DBA239924797}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Item Code"
+              DTS:DTSID="{6C602957-B82F-489F-B683-A417F9FCB035}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{87233C03-1986-4B04-9F05-6D12D1770AB9}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Qty"
+              DTS:DTSID="{A8013C2D-14B2-47CC-9850-BB634CFF5D0D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Val"
+              DTS:DTSID="{E0CD3331-E33E-4DD6-9B39-7729FF2298BF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LAPTOP-N7RI0BVI\SQLEXPRESS.Sales_data]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{70137DC6-3F8C-47AD-9A35-FCECA447F555}"
+      DTS:ObjectName="LAPTOP-N7RI0BVI\SQLEXPRESS.Sales_data">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-N7RI0BVI\SQLEXPRESS;Initial Catalog=Sales_data;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{70137DC6-3F8C-47AD-9A35-FCECA447F555}LAPTOP-N7RI0BVI\SQLEXPRESS.Sales_data;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dist #1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F6E63F41-DEE4-4EF5-9ACF-AB5A331153AB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dist #1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Dist #1\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input].Columns[TransformedDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedDate"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\Conditional Split.Outputs[Length of 7]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Length of 7"
+                  synchronousInputId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[LEN](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]}) == 7</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">LEN(TransformedDate) == 7</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dist #1\Conditional Split.Outputs[Length of 8]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Length of 8"
+                  synchronousInputId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[LEN](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]}) == 8</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">LEN(TransformedDate) == 8</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">1</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dist #1\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dist #1\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dist #1\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dist #1\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Date"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input].Columns[customer Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customer Code"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[customer Code]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input].Columns[Item Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Item Code"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Item Code]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input].Columns[Qty]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Qty"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Qty]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input].Columns[Val]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Val"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Val]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]"
+                      name="TransformedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedCustomerCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedCustomerCode]"
+                      name="TransformedCustomerCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[customer Code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedItemCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedItemCode]"
+                      name="TransformedItemCode"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Item Code]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity]"
+                      name="Quantity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Qty]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Sales]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="IgnoreFailure"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Sales]"
+                      name="Sales"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Val]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dist #1\dist #1"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="dist #1"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dist #1\dist #1.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Distributor 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Distributor 1]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[customer Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[customer Code]"
+                      length="50"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[customer Code]"
+                      name="customer Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Item Code]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Item Code]"
+                      length="50"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Item Code]"
+                      name="Item Code"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      length="50"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Qty]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Qty]"
+                      length="50"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Qty]"
+                      name="Qty"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Val]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Val]"
+                      length="50"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Val]"
+                      name="Val"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[customer Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customer Code" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Item Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Item Code" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Qty]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].ExternalColumns[Val]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Val" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dist #1\Handle Date length of 7"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Handle Date length of 7"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Dist #1\Handle Date length of 7.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Handle Date length of 7.Inputs[Derived Column Input].Columns[TransformedDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedDate"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Dist #1\Handle Date length of 7.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Output].Columns[DateKey]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]},4,4) + "-" + [SUBSTRING](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]},2,2) + "-0" + [SUBSTRING](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]},1,1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(TransformedDate,4,4) + "-" + SUBSTRING(TransformedDate,2,2) + "-0" + SUBSTRING(TransformedDate,1,1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Dist #1\Handle Date length of 7.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dist #1\Handle Date length of 8"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Handle Date length of 8"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Dist #1\Handle Date length of 8.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Handle Date length of 8.Inputs[Derived Column Input].Columns[TransformedDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedDate"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Dist #1\Handle Date length of 8.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Output].Columns[DateKey]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Output].Columns[DateKey]"
+                      name="DateKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]},5,4) + "-" + [SUBSTRING](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]},3,2) + "-" + [SUBSTRING](#{Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]},1,2)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(TransformedDate,5,4) + "-" + SUBSTRING(TransformedDate,3,2) + "-" + SUBSTRING(TransformedDate,1,2)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Dist #1\Handle Date length of 8.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dist #1\Sales"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Sales"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Dist #1\Sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LAPTOP-N7RI0BVI\SQLEXPRESS.Sales_data]"
+                  connectionManagerRefId="Package.ConnectionManagers[LAPTOP-N7RI0BVI\SQLEXPRESS.Sales_data]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      externalMetadataColumnId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Quantity]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].Columns[Sales]"
+                      cachedDataType="r4"
+                      cachedName="Sales"
+                      externalMetadataColumnId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Sales]"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Sales]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].Columns[TransformedItemCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedItemCode"
+                      externalMetadataColumnId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[ItemCode]"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedItemCode]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].Columns[TransformedCustomerCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedCustomerCode"
+                      externalMetadataColumnId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[ClientCode]"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedCustomerCode]" />
+                    <inputColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].Columns[DateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="DateKey"
+                      externalMetadataColumnId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[DateKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[ClientCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="ClientCode" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[ItemCode]"
+                      dataType="wstr"
+                      length="255"
+                      name="ItemCode" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                      dataType="wstr"
+                      length="255"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Quantity]"
+                      dataType="i4"
+                      name="Quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input].ExternalColumns[Sales]"
+                      dataType="r8"
+                      name="Sales" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\Sales.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Dist #1\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Sales.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Dist #1\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Dist #1\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[customer Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customer Code"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[customer Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[customer Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[Item Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Item Code"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Item Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Item Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Date"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[Qty]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Qty"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Qty]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Qty]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[Val]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Val"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Val]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Val]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[TransformedDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedDate"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[TransformedCustomerCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedCustomerCode"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedCustomerCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedCustomerCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[TransformedItemCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedItemCode"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedItemCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedItemCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Quantity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[Sales]"
+                      cachedDataType="r4"
+                      cachedName="Sales"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Sales]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Sales]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 1].Columns[DateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateKey"
+                      lineageId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Output].Columns[DateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[DateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Dist #1\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[customer Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customer Code"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[customer Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[customer Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[Item Code]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Item Code"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Item Code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Item Code]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Date"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Date]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Date]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[Qty]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Qty"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Qty]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Qty]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[Val]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Val"
+                      lineageId="Package\Dist #1\dist #1.Outputs[Flat File Source Output].Columns[Val]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Val]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[TransformedDate]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedDate"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[TransformedCustomerCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedCustomerCode"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedCustomerCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedCustomerCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[TransformedItemCode]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="TransformedItemCode"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[TransformedItemCode]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedItemCode]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[Quantity]"
+                      cachedDataType="i4"
+                      cachedName="Quantity"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Quantity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Quantity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[Sales]"
+                      cachedDataType="r4"
+                      cachedName="Sales"
+                      lineageId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output].Columns[Sales]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Sales]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Dist #1\Union All.Inputs[Union All Input 2].Columns[DateKey]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="DateKey"
+                      lineageId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Output].Columns[DateKey]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[DateKey]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Dist #1\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Dist #1\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[customer Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[customer Code]"
+                      name="customer Code" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Item Code]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Item Code]"
+                      name="Item Code" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Date]"
+                      name="Date" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Qty]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Qty]"
+                      name="Qty" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Val]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Val]"
+                      name="Val" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedDate]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedDate]"
+                      name="TransformedDate" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedCustomerCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedCustomerCode]"
+                      name="TransformedCustomerCode" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedItemCode]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[TransformedItemCode]"
+                      name="TransformedItemCode" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Quantity]"
+                      dataType="i4"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Quantity]"
+                      name="Quantity" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Sales]"
+                      dataType="r4"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[Sales]"
+                      name="Sales" />
+                    <outputColumn
+                      refId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[DateKey]"
+                      dataType="wstr"
+                      length="11"
+                      lineageId="Package\Dist #1\Union All.Outputs[Union All Output 1].Columns[DateKey]"
+                      name="DateKey" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Dist #1.Paths[Data Conversion Output]"
+              endId="Package\Dist #1\Conditional Split.Inputs[Conditional Split Input]"
+              name="Data Conversion Output"
+              startId="Package\Dist #1\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Dist #1.Paths[Derived Column Output]"
+              endId="Package\Dist #1\Union All.Inputs[Union All Input 1]"
+              name="Derived Column Output"
+              startId="Package\Dist #1\Handle Date length of 8.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Dist #1.Paths[Derived Column Output1]"
+              endId="Package\Dist #1\Union All.Inputs[Union All Input 2]"
+              name="Derived Column Output"
+              startId="Package\Dist #1\Handle Date length of 7.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Dist #1.Paths[Flat File Source Output]"
+              endId="Package\Dist #1\Data Conversion.Inputs[Data Conversion Input]"
+              name="Flat File Source Output"
+              startId="Package\Dist #1\dist #1.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Dist #1.Paths[Length of 7]"
+              endId="Package\Dist #1\Handle Date length of 7.Inputs[Derived Column Input]"
+              name="Length of 7"
+              startId="Package\Dist #1\Conditional Split.Outputs[Length of 7]" />
+            <path
+              refId="Package\Dist #1.Paths[Length of 8]"
+              endId="Package\Dist #1\Handle Date length of 8.Inputs[Derived Column Input]"
+              name="Length of 8"
+              startId="Package\Dist #1\Conditional Split.Outputs[Length of 8]" />
+            <path
+              refId="Package\Dist #1.Paths[Union All Output 1]"
+              endId="Package\Dist #1\Sales.Inputs[OLE DB Destination Input]"
+              name="Union All Output 1"
+              startId="Package\Dist #1\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="110.4,41.6"
+          Id="Package\Dist #1"
+          TopLeft="223.333321130939,152.533332272636" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Dist #1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="108.8,41.6"
+          Id="Package\Dist #1\dist #1"
+          TopLeft="148.333325228758,97.0666659916772" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Dist #1\Data Conversion"
+          TopLeft="529.166637754276,179.399998752475" />
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Flat File Source Output]"
+          TopLeft="202.733325228758,138.666665991677">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="404.433312525518,40.7333327607977"
+              Start="0,0"
+              End="404.433312525518,33.2333327607977">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3666663803989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3666663803989"
+                    Point2="0,20.3666663803989"
+                    Point3="4,20.3666663803989" />
+                  <mssgle:LineSegment
+                    End="400.433312525518,20.3666663803989" />
+                  <mssgle:CubicBezierSegment
+                    Point1="400.433312525518,20.3666663803989"
+                    Point2="404.433312525518,20.3666663803989"
+                    Point3="404.433312525518,24.3666663803989" />
+                  <mssgle:LineSegment
+                    End="404.433312525518,33.2333327607977" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Dist #1\Conditional Split"
+          TopLeft="561.666635978554,282.533331368632" />
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Data Conversion Output]"
+          TopLeft="607.166637754276,220.999998752475">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.2999982242785,61.533332616157"
+              Start="0,0"
+              End="31.2999982242785,54.033332616157">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.7666663080785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.7666663080785"
+                    Point2="0,30.7666663080785"
+                    Point3="4,30.7666663080785" />
+                  <mssgle:LineSegment
+                    End="27.2999982242785,30.7666663080785" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.2999982242785,30.7666663080785"
+                    Point2="31.2999982242785,30.7666663080785"
+                    Point3="31.2999982242785,34.7666663080785" />
+                  <mssgle:LineSegment
+                    End="31.2999982242785,54.033332616157" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Dist #1\Handle Date length of 7"
+          TopLeft="704.9999614805,378.733330699669" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Dist #1\Handle Date length of 8"
+          TopLeft="440.833309247263,369.199997432629" />
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Length of 7]"
+          TopLeft="662.733302645221,324.133331368632">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="135.866658835279,54.5999993310372"
+              Start="0,0"
+              End="135.866658835279,47.0999993310372">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1777316870398" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1777316870398"
+                    Point2="0,22.1777316870398"
+                    Point3="4,22.1777316870398" />
+                  <mssgle:LineSegment
+                    End="131.866658835279,22.1777316870398" />
+                  <mssgle:CubicBezierSegment
+                    Point1="131.866658835279,22.1777316870398"
+                    Point2="135.866658835279,22.1777316870398"
+                    Point3="135.866658835279,26.1777316870398" />
+                  <mssgle:LineSegment
+                    End="135.866658835279,47.0999993310372" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.1831536363895,27.1777316870398,51.5003515625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Length of 8]"
+          TopLeft="614.199969311888,324.133331368632">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-79.7666600646247,45.0666660639976"
+              Start="0,0"
+              End="-79.7666600646247,37.5666660639976">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3054293084691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3054293084691"
+                    Point2="0,18.3054293084691"
+                    Point3="-4,18.3054293084691" />
+                  <mssgle:LineSegment
+                    End="-75.7666600646247,18.3054293084691" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-75.7666600646247,18.3054293084691"
+                    Point2="-79.7666600646247,18.3054293084691"
+                    Point3="-79.7666600646247,22.3054293084691" />
+                  <mssgle:LineSegment
+                    End="-79.7666600646247,37.5666660639976" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-65.6335058135624,23.3054293084691,51.5003515625,11.7119140625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="120,41.6"
+          Id="Package\Dist #1\Union All"
+          TopLeft="627.499965714913,485.333329958386" />
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Derived Column Output]"
+          TopLeft="534.433309247263,410.799997432629">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="153.06665646765,74.5333325257565"
+              Start="0,0"
+              End="153.06665646765,67.0333325257565">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.2666662628782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.2666662628782"
+                    Point2="0,37.2666662628782"
+                    Point3="4,37.2666662628782" />
+                  <mssgle:LineSegment
+                    End="149.06665646765,37.2666662628782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="149.06665646765,37.2666662628782"
+                    Point2="153.06665646765,37.2666662628782"
+                    Point3="153.06665646765,41.2666662628782" />
+                  <mssgle:LineSegment
+                    End="153.06665646765,67.0333325257565" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Derived Column Output1]"
+          TopLeft="798.5999614805,420.333330699669">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-92.4333290989206,64.9999992587169"
+              Start="0,0"
+              End="-92.4333290989206,57.4999992587169">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.4868416663455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.4868416663455"
+                    Point2="0,38.4868416663455"
+                    Point3="-4,38.4868416663455" />
+                  <mssgle:LineSegment
+                    End="-88.4333290989206,38.4868416663455" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-88.4333290989206,38.4868416663455"
+                    Point2="-92.4333290989206,38.4868416663455"
+                    Point3="-92.4333290989206,42.4868416663455" />
+                  <mssgle:LineSegment
+                    End="-92.4333290989206,57.4999992587169" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="104.8,41.6"
+          Id="Package\Dist #1\Sales"
+          TopLeft="298.333317033119,488.799996673266" />
+        <EdgeLayout
+          Id="Package\Dist #1.Paths[Union All Output 1]"
+          TopLeft="627.499965714913,507.866663315826">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-224.366648681793,0"
+              Start="0,0"
+              End="-216.866648681793,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-216.866648681793,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dist #1\Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
